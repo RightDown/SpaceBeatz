@@ -10,10 +10,13 @@ public class Movement : MonoBehaviour
     private Vector2 target;
     private Animator anim;
 
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Start()
     {
         target = rightPoint.position;
-        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -35,6 +38,7 @@ public class Movement : MonoBehaviour
         {
             target = rightPoint.position;
             anim.SetBool("Rocket_rotate_right", true);
+            anim.SetBool("Rocket_rotate_left", false);
         }
     }
     public void MoveLeft()
@@ -43,6 +47,7 @@ public class Movement : MonoBehaviour
         {
             target = leftPoint.position;
             anim.SetBool("Rocket_rotate_left", true);
+            anim.SetBool("Rocket_rotate_right", false);
         } 
     }
 }

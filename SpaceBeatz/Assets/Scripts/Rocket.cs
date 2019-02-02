@@ -23,7 +23,6 @@ public class Rocket : MonoBehaviour
     [SerializeField]
     private float life = 100;
 
-    // Update is called once per frame
     void Update()
     {
         if (Life <= 0)

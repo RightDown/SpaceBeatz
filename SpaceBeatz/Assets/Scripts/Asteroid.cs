@@ -7,6 +7,7 @@ public class Asteroid : MonoBehaviour
     public float rotationSpeed;
     public float moveSpeed;
     public float damage;
+    public float score;
     void Start()
     {
         
@@ -24,6 +25,14 @@ public class Asteroid : MonoBehaviour
         {
             collision.GetComponent<Rocket>().Life -= damage;
             Destroy(gameObject);
+        }
+        else if (collision.name.Equals("AsteroidEnd"))
+        {
+            Destroy(gameObject);
+        }
+        else if (collision.name.Equals("GivePoint"))
+        {
+            GameManager.instance.score += score;
         }
     }
 

@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     public Transform leftPoint;
     private Vector2 target;
     private Animator anim;
+    private bool moving = true;
 
     private void Awake()
     {
@@ -28,26 +29,29 @@ public class Movement : MonoBehaviour
             {
                 anim.SetBool("Rocket_rotate_right", false);
                 anim.SetBool("Rocket_rotate_left", false);
+                moving = false;
             }
         }
     }
 
     public void MoveRight()
     {
-        if(transform.position != rightPoint.position)
+        if(transform.position != rightPoint.position && !moving)
         {
             target = rightPoint.position;
             anim.SetBool("Rocket_rotate_right", true);
             anim.SetBool("Rocket_rotate_left", false);
+            moving = true;
         }
     }
     public void MoveLeft()
     {
-        if (transform.position != leftPoint.position)
+        if (transform.position != leftPoint.position && !moving)
         {
             target = leftPoint.position;
             anim.SetBool("Rocket_rotate_left", true);
             anim.SetBool("Rocket_rotate_right", false);
+            moving = true;
         } 
     }
 }

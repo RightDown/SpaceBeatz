@@ -22,6 +22,13 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        #if UNITY_EDITOR || UNITY_STANDALONE
+        if (Input.GetKeyDown(KeyCode.D))
+            MoveRight();
+        else if (Input.GetKeyDown(KeyCode.A))
+            MoveLeft();
+        #endif
+
         if ((Vector2)transform.position != target)
         {
             transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
